@@ -1,11 +1,11 @@
 # Site settings
-title: Your Blog
-SEOTitle: 你的博客 | Your Blog
+title: Eric Zhou's Blog
+SEOTitle: Eric's Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: ""
-keyword: ""
-url: "https://eric-ds-zhou.github.io/"              # your host, for absolute URL
+email: eric_ds_zhou@outlook.com
+description: "The dark night gave me dark eyes, yet I use them to seek the light."
+keyword: "Computer Science, Eric Zhou, 周鼎盛, Algorithms, Systems, Database"
+url: "https://eric-ds-zhou.github.io"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
