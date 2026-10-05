@@ -6,7 +6,7 @@ date:       2026-10-4 21:32:00
 author:     "Eric Zhou"
 catalog: true
 published: true
-header-img: "post-bg-js-module.jpg"
+header-img: "img/post-bg-js-module.jpg"
 tags:
   - Algorithms
   - Technical Notes
