@@ -51,30 +51,82 @@ layout: default
 
                 <hr>
 
-                {% if site.duoshuo_share && site.duoshuo_username %}
-                <!-- 多说 Share start -->
-                </style>
-                <div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="{{page.id}}"
-                    data-title="{{page.title}}"
-                    data-url="{{site.url}}{{site.baseurl}}{{page.url}}"
-                    data-images="{{ site.url }}{{site.baseurl}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
-                    data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }} " >
-                    <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
+                <!-- WeChat Share Start -->
+                <div class="wechat-share-container">
+                    <button onclick="shareToWechat()" class="wechat-share-btn">
+                        Share on WeChat
+                    </button>
+                
+                    <div id="wechat-qr" class="wechat-qr-box" style="display: none;">
+                        <p>Scan with WeChat</p>
+                        <img id="wechat-qr-img" alt="QR Code">
                     </div>
-                <hr>
                 </div>
-                <!-- 多说 Share end-->
-                {% endif %}
+                
+                <style>
+                    .wechat-share-container {
+                        text-align: right;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                    }
+                
+                    .wechat-share-btn {
+                        border: 1px solid #ddd;
+                        background: #fff;
+                        padding: 8px 16px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        transition: 0.2s;
+                    }
+                
+                    .wechat-share-btn:hover {
+                        background: #f5f5f5;
+                    }
+                
+                    .wechat-qr-box {
+                        margin-top: 12px;
+                        text-align: right;
+                    }
+                
+                    .wechat-qr-box p {
+                        margin-bottom: 8px;
+                        font-size: 13px;
+                        color: #666;
+                    }
+                
+                    .wechat-qr-box img {
+                        width: 180px;
+                        height: 180px;
+                    }
+                </style>
+                
+                <script>
+                    function shareToWechat() {
+                        const url = window.location.href;
+                        const title = document.title;
+
+                        // On supported mobile browsers, open the system share menu
+                        if (navigator.share) {
+                            navigator.share({
+                                title: title,
+                                url: url
+                            }).catch(() => { });
+                        } else {
+                            // On desktop, show a QR code for the current page
+                            const qrBox = document.getElementById("wechat-qr");
+                            const qrImg = document.getElementById("wechat-qr-img");
+
+                            qrImg.src =
+                                "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data="
+                                + encodeURIComponent(url);
+
+                            qrBox.style.display =
+                                qrBox.style.display === "none" ? "block" : "none";
+                        }
+                    }
+                </script>
+                <!-- WeChat Share End -->
 
 
                 <ul class="pager">
