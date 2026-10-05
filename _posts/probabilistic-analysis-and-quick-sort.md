@@ -1,8 +1,16 @@
-# Probabilistic Analysis and Quick Sort Notes
-
-**Author:** Eric Zhou  
-**Email:** <eric_ds_zhou@outlook.com>  
-**Date:** Oct 3, 2026
+---
+layout:     post
+title:      "Probabilistic Analysis and Quick Sort Notes"
+subtitle:   "OSU Foundation_2 Midterm_2"
+date:       2026-10-4 21:32:00
+author:     "Eric Zhou"
+catalog: true
+published: true
+header-img: "post-bg-js-module.jpg"
+tags:
+  - Algorithms
+  - Technical Notes
+---
 
 ## Introduction
 
