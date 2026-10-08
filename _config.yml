@@ -71,7 +71,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 friends: [
     {
         title: "Hux Blog",
-        href: "https://huxpro.github.io"
+        href: "#"
     },{
         title: "Foo",
         href: "#"
