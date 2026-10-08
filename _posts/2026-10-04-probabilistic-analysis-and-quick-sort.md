@@ -13,10 +13,12 @@ tags:
 ---
 
 ## Introduction
+{:.no_toc}
 
 This technical note summarizes the tools and logic used in probabilistic analysis.
 
 ## Table of Contents
+{:.no_toc}
 
 * TOC
 {:toc}
