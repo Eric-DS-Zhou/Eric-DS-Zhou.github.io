@@ -34,7 +34,7 @@ We should try our best to distribute keys uniformly across all buckets.
 ***Bad Hash Table:***
 
 $$
-h(K) = (9K) mod 78
+h(K) = (9K)\bmod78
 $$
 
 Since gcd(9, 78) = 3, the hash function can only produce multiples of 3 (0, 3, 6, ..., 75).
@@ -45,7 +45,7 @@ Therefore, only 1/3 of the buckets can be used.
 ***Bad Hash Table:***
 
 $$
-h(K) = K mod 10
+h(K) = K\bmod10
 $$
 
 We can easily see that keys 10, 20, and 30 will all be mapped to bucket 0,
@@ -1011,7 +1011,7 @@ Then, we check whether `need` is already in the hash table.
 
 ### Code
 
-```java []
+```java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
