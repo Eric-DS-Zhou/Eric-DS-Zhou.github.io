@@ -27,25 +27,27 @@ This technical note summarizes the tools and logic used in Hash Table and heap.
 
 According to the note, Good hash functions should have the following properties:
 
-(1) All hash table locations are equally likely to be accessed.
+### All hash table locations are equally likely to be accessed.
 
 We should try our best to distribute keys uniformly across all buckets.
 
-Bad Hash Table:
+*Bad Hash Table:*
 
 h(K) = (9K) mod 78
 
 Since gcd(9, 78) = 3, the hash function can only produce multiples of 3 (0, 3, 6, ..., 75).
 Therefore, only 1/3 of the buckets can be used.
 
-(2) Keys with a “regular” pattern should not be mapped to the same locations.
+### Keys with a “regular” pattern should not be mapped to the same locations.
 
-Bad Hash Table:
+*Bad Hash Table:*
 
 h(K) = K mod 10
 
 We can easily see that keys 10, 20, and 30 will all be mapped to bucket 0,
 resulting in multiple collisions.
+
+### Hash Table Size and Modulus
 
 In addition, the size of the hash table should be greater than or equal to the modulus.
 Otherwise, some hash values may exceed the valid index range.
@@ -547,7 +549,7 @@ $$
 
 Although the table size doubles only occasionally, the quadratic expansion cost dominates the total running time. Therefore, the amortized cost of each insertion is linear rather than constant.
 
-## What Is a valid heap?
+## What Is a Valid Heap?
 
 In this section, we only consider **Max-Heaps**.
 
@@ -590,9 +592,9 @@ $$
 
 Since the height grows logarithmically with $n$, heap operations that move along one path from the root to a leaf (or vice versa) can take at most $O(\log n)$ time.
 
-## Heap operation
+## Heap Operation
 
-### Insert in heap
+### Insert in Heap
 
 When inserting a new element into a Max-Heap, we first place it at the next available position to maintain the complete binary tree property.
 
