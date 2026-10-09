@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Probabilistic Analysis and Quick Sort Notes"
+title:      "Probabilistic Analysis and Quick Sort"
 subtitle:   "Foundation_2 Midterm_2"
 date:       2026-10-04 21:32:00
 author:     "Eric Zhou"

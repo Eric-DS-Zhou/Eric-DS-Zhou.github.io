@@ -862,8 +862,6 @@ $$
 
 ### Step 4: Lower Bound
 
-##### Step 4: Lower Bound
-
 We start with:
 
 $$
