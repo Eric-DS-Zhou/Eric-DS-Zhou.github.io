@@ -101,14 +101,14 @@ Instead of searching for another empty bucket, chained hashing stores the elemen
 | Method | Best Case | Expected Case | Worst Case |
 | :--- | :---: | :---: | :---: |
 | `Insert(K, D)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(1)$ |
-| `Member(K)` | $\Theta(1)$ | $\Theta(1+n/m)$ | $\Theta(n)$ |
-| `Retrieve(K)` | $\Theta(1)$ | $\Theta(1+n/m)$ | $\Theta(n)$ |
-| `Add(K, x)` | $\Theta(1)$ | $\Theta(1+n/m)$ | $\Theta(n)$ |
-| `Replace(K, D)` | $\Theta(1)$ | $\Theta(1+n/m)$ | $\Theta(n)$ |
+| `Member(K)` | $\Theta(1)$ | $\Theta(1+s/m)$ | $\Theta(s)$ |
+| `Retrieve(K)` | $\Theta(1)$ | $\Theta(1+s/m)$ | $\Theta(s)$ |
+| `Add(K, x)` | $\Theta(1)$ | $\Theta(1+s/m)$ | $\Theta(s)$ |
+| `Replace(K, D)` | $\Theta(1)$ | $\Theta(1+s/m)$ | $\Theta(s)$ |
 
 Where:
 
-- $n$ = Number of elements stored in the hash table.
+- $s$ = Number of elements stored in the hash table.
 - $m$ = Number of buckets in the hash table.
 
 The expected time complexity assumes uniform hashing.
@@ -164,17 +164,17 @@ Unlike chained hashing, no linked lists are needed because all keys are stored d
 
 | Method | Best Case | Expected Case | Worst Case |
 | :--- | :---: | :---: | :---: |
-| `Insert(K, D)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(n)$ |
-| `Member(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(n)$ |
-| `Retrieve(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(n)$ |
-| `Delete(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(n)$ |
-| `Retrieve(K)` (with deletion) | $\Theta(1)$ | $\Theta(1)$ | $\Theta(n)$ |
+| `Insert(K, D)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(s)$ |
+| `Member(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(s)$ |
+| `Retrieve(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(s)$ |
+| `Delete(K)` | $\Theta(1)$ | $\Theta(1)$ | $\Theta(s)$ |
+| `Retrieve(K)` (with deletion) | $\Theta(1)$ | $\Theta(1)$ | $\Theta(s)$ |
 
 Where:
 
-- $n$ = Number of elements stored in the hash table.
+- $s$ = Number of elements stored in the hash table.
 - $m$ = Number of buckets in the hash table.
-- $\alpha = n/m$ = Load factor.
+- $\alpha = s/m$ = Load factor.
 
 ## Example: Time Complexity Analysis
 
@@ -231,16 +231,19 @@ $$
 
 **Worst Case:**
 
-In the worst case, `Member` and `Add` may each take $\Theta(n)$ time due to collisions and repeated probing.
+In the worst case, `Member` and `Add` may each take $\Theta(s)$ time due to collisions and repeated probing.
 
-The first loop may perform both `Member` and `Add` in each iteration, while the second loop performs `Member`.
+In the first loop, the number of elements increases as elements are added, while the second loop performs Member on a Hashtable containing up to $n$ elements.
 
 Thus, using the classroom worst-case bounds:
 
 $$
+\begin{aligned}
 T_{\text{worst}}(n)
-= n(\Theta(n)+\Theta(n))+n\Theta(n)
-= \boxed{\Theta(n^2)}
+&= \sum_{i=1}^{n}(\Theta(i)+\Theta(i)) + n\Theta(n)\
+&= \Theta(n^2)+\Theta(n^2)\
+&= \boxed{\Theta(n^2)}
+\end{aligned}
 $$
 
 **Summary:**
