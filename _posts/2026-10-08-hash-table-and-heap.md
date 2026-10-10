@@ -240,8 +240,8 @@ Thus, using the classroom worst-case bounds:
 $$
 \begin{aligned}
 T_{\text{worst}}(n)
-&= \sum_{i=1}^{n}(\Theta(i)+\Theta(i)) + n\Theta(n)\
-&= \Theta(n^2)+\Theta(n^2)\
+&= \sum_{i=1}^{n}(\Theta(i)+\Theta(i)) + n\Theta(n)\\
+&= \Theta(n^2)+\Theta(n^2)\\
 &= \boxed{\Theta(n^2)}
 \end{aligned}
 $$
