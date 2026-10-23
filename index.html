@@ -19,7 +19,7 @@ description: "The dark night gave me dark eyes, yet I use them to seek the light
             {% if post.description %}
             {{ post.description }}
             {% else %}
-            {{ post.content | strip_html | truncate:120 }}
+            {{ post.content | strip_html | truncate:200 }}
             {% endif %}
         </div>
     </a>
