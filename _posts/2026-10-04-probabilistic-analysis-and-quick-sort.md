@@ -4,7 +4,6 @@ title:      "Probabilistic Analysis and Quick Sort"
 subtitle:   "Foundation_2 Midterm_2"
 date:       2026-10-04 21:32:00
 author:     "Eric Zhou"
-description: "This technical note summarizes the tools and logic used in probabilistic analysis."
 catalog: true
 published: true
 header-img: "img/post-bg-js-module.jpg"

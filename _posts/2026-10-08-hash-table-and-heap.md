@@ -4,7 +4,6 @@ title:      "Hash Table and Heap"
 subtitle:   "Foundation_2 Midterm_3"
 date:       2026-10-08 20:26:00
 author:     "Eric Zhou"
-description: "This technical note summarizes the tools and logic used in Hash Table and heap."
 catalog: true
 published: true
 header-img: "img/post-bg-js-module.jpg"
