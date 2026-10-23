@@ -9,7 +9,19 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')        
+    }
+    /* KaiTi for selected posts */
+    .post-container.kaiti-post {
+        font-family: "Times New Roman", "Kaiti SC", "STKaiti", "KaiTi", serif;
+        font-size: 18px;
+        line-height: 1.9;
+    }
+
+    /* Keep code fonts unchanged */
+    .post-container.kaiti-post pre,
+    .post-container.kaiti-post code {
+        font-family: Consolas, "Courier New", monospace;
     }
 </style>
 <header class="intro-header" >
@@ -45,7 +57,8 @@ layout: default
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
-                post-container">
+                post-container
+                 {% if page.kaiti %}kaiti-post{% endif %}">
 
 				{{ content }}
 
