@@ -1370,6 +1370,8 @@ RBInsertFixup(T, z)
     T.root.color = black
 ```
 
+Note: The parameter z is passed by reference in RBInsertFixupA and RBInsertFixupB, as indicated by alters z in their function definitions. Therefore, any modifications to z are preserved across subsequent function calls.
+
 The complete insertion algorithm is:
 
 ```text
@@ -1443,7 +1445,7 @@ $$
 v.height = 1 + \max(v.left.height, v.right.height)
 $$
 
-Assume `NIL.height = 0`.
+Assume `NIL.height = -1`.
 
 ### Given Function
 
