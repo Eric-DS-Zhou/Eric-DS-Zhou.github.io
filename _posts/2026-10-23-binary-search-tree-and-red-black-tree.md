@@ -15,7 +15,7 @@ tags:
 ## Introduction
 {:.no_toc}
 
-This technical note summarizes the tools and logic used in Binary Search Tree and Red Black Tree
+This technical note summarizes the tools and logic used in Binary Search Tree and Red Black Tree.
 
 ## Table of contents
 {:.no_toc}
@@ -1481,7 +1481,7 @@ LeftRotateAndUpdateBalance(T, z) {
     while (z != NIL) {
         z.height = 1 + max(z.left.height, z.right.height)
         z.balance = |z.left.height - z.right.height|
-        z = z.parent()
+        z = z.parent
     }
 }
 ```
@@ -1492,9 +1492,9 @@ $$
 \boxed{\Theta(h)}
 $$
 
-After the left rotation, the algorithm updates the height and balance of each node along the path from the original `z` to the root. Each update takes constant time, and there are at most \(h + 1\) nodes on this path.
+After the left rotation, the algorithm updates the height and balance of each node along the path from the original `z` to the root. Each update takes constant time, and there are at most $(h + 1)$ nodes on this path.
 
-Therefore, the worst-case time complexity is \(\Theta(h)\).
+Therefore, the worst-case time complexity is $\Theta(h)$.
 
 ## Reference List
 
