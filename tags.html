@@ -25,6 +25,9 @@ header-img: "img/faded.png"
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<!-- 标签云 -->
 			<div id="tag_cloud" class="tags">
+				<a href="#" data-tag="" class="is-active">
+					Show All <sup>{{ site.posts.size }}</sup>
+				</a>
 				{% for tag in site.tags %}
 				<a href="#{{ tag[0] }}" data-tag="{{ tag[0] | escape }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
 					{{ tag[0] }} <sup>{{ tag[1].size }}</sup>
@@ -74,28 +77,39 @@ header-img: "img/faded.png"
 
 		let selectedTag = null;
 
+		function filterTags(clickedTag) {
+
+			// Show All or toggle the selected tag
+			if (clickedTag === "" || selectedTag === clickedTag) {
+				selectedTag = null;
+			} else {
+				selectedTag = clickedTag;
+			}
+
+			// Show or hide article groups
+			lists.forEach(function (list) {
+				if (selectedTag === null ||
+					list.dataset.tag === selectedTag) {
+					list.style.display = "";
+				} else {
+					list.style.display = "none";
+				}
+			});
+
+			// Update selected tag color
+			tags.forEach(function (tag) {
+				const isSelected = selectedTag === null
+					? tag.dataset.tag === ""
+					: tag.dataset.tag === selectedTag;
+
+				tag.classList.toggle("is-active", isSelected);
+			});
+		}
+
 		tags.forEach(function (tag) {
 			tag.addEventListener("click", function (event) {
 				event.preventDefault();
-
-				const clickedTag = tag.dataset.tag;
-
-				// Click the same tag again to show all articles
-				if (selectedTag === clickedTag) {
-					selectedTag = null;
-				} else {
-					selectedTag = clickedTag;
-				}
-
-				// Filter articles without scrolling
-				lists.forEach(function (list) {
-					if (selectedTag === null ||
-						list.dataset.tag === selectedTag) {
-						list.style.display = "";
-					} else {
-						list.style.display = "none";
-					}
-				});
+				filterTags(tag.dataset.tag);
 			});
 		});
 	});
