@@ -86,6 +86,14 @@ layout: default
                 </div>
             </div>
 
+            <!-- Article Catalog -->
+            {% if page.catalog != false %}
+            <div id="article-catalog" class="side-catalog">
+                <h5>CATALOG</h5>
+                <nav id="catalog-list"></nav>
+            </div>
+            {% endif %}
+
     <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -159,3 +167,61 @@ layout: default
     }
 </style>
 {% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const catalog = document.getElementById("article-catalog");
+        const list = document.getElementById("catalog-list");
+        const article = document.querySelector(".post-container");
+
+        if (!catalog || !list || !article) return;
+
+        const headings = Array.from(
+            article.querySelectorAll("h2, h3")
+        ).filter(h => !h.closest(".comment"));
+
+        if (!headings.length) {
+            catalog.style.display = "none";
+            return;
+        }
+
+        headings.forEach((heading, index) => {
+            if (!heading.id) {
+                heading.id = "section-" + index;
+            }
+
+            const link = document.createElement("a");
+            link.href = "#" + heading.id;
+            link.textContent = heading.textContent.replace(/^#\s*/, "");
+            link.className = "catalog-link";
+
+            if (heading.tagName === "H3") {
+                link.classList.add("catalog-subitem");
+            }
+
+            list.appendChild(link);
+        });
+
+        const links = Array.from(list.querySelectorAll("a"));
+
+        function updateActive() {
+            let activeIndex = 0;
+
+            headings.forEach((heading, index) => {
+                if (heading.getBoundingClientRect().top <= 150) {
+                    activeIndex = index;
+                }
+            });
+
+            links.forEach((link, index) => {
+                link.classList.toggle("active", index === activeIndex);
+            });
+        }
+
+        window.addEventListener("scroll", updateActive, {
+            passive: true
+        });
+
+        updateActive();
+    });
+</script>

@@ -21,3 +21,61 @@
     background-color: #0085a1 !important;
     color: #ffffff !important;
 }
+
+/* Article Catalog */
+
+#article-catalog {
+    position: fixed;
+    top: 110px;
+    right: max(20px, calc((100vw - 1300px) / 2));
+    width: 190px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    font-size: 13px;
+    z-index: 10;
+}
+
+#article-catalog h5 {
+    color: #999;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#catalog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#catalog-list a {
+    display: block;
+    padding: 5px 8px;
+    color: #aaa;
+    text-decoration: none;
+    border-radius: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#catalog-list a:hover {
+    color: #0085a1;
+}
+
+#catalog-list a.active {
+    color: #0085a1;
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+#catalog-list .catalog-subitem {
+    padding-left: 20px;
+}
+
+/* Hide catalog on smaller screens */
+@media (max-width: 1250px) {
+    #article-catalog {
+        display: none;
+    }
+}
