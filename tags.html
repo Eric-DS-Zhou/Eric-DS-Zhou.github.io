@@ -23,17 +23,20 @@ header-img: "img/faded.png"
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 标签云 -->
-			<div id='tag_cloud' class="tags">
+			<!-- 标签云 -->
+			<div id="tag_cloud" class="tags">
 				{% for tag in site.tags %}
-				<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }} <sup>{{ tag[1].size }}</sup>
+				<a href="#{{ tag[0] }}" data-tag="{{ tag[0] | escape }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+					{{ tag[0] }} <sup>{{ tag[1].size }}</sup>
 				</a>
 				{% endfor %}
 			</div>
 
+
             <!-- 标签列表 -->
 			{% for tag in site.tags %}
-			<div class="one-tag-list">
+			<div class="one-tag-list" data-tag="{{ tag[0] | escape }}">
+
 			  	<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
                     <span class="tag-text">{{ tag[0] }}</span>
                 </span>
@@ -63,3 +66,37 @@ header-img: "img/faded.png"
 		</div>
 	</div>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const tags = document.querySelectorAll("#tag_cloud a");
+		const lists = document.querySelectorAll(".one-tag-list");
+
+		let selectedTag = null;
+
+		tags.forEach(function (tag) {
+			tag.addEventListener("click", function (event) {
+				event.preventDefault();
+
+				const clickedTag = tag.dataset.tag;
+
+				// Click the same tag again to show all articles
+				if (selectedTag === clickedTag) {
+					selectedTag = null;
+				} else {
+					selectedTag = clickedTag;
+				}
+
+				// Filter articles without scrolling
+				lists.forEach(function (list) {
+					if (selectedTag === null ||
+						list.dataset.tag === selectedTag) {
+						list.style.display = "";
+					} else {
+						list.style.display = "none";
+					}
+				});
+			});
+		});
+	});
+</script>
