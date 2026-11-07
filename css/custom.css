@@ -15,9 +15,3 @@
     background-color: #f5f5f5;
     font-weight: bold;
 }
-
-/* Selected Tag */
-#tag_cloud a.is-active {
-    background-color: #0085a1 !important;
-    color: #ffffff;
-}
