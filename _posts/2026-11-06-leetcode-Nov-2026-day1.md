@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "LeetCode - Nov 2026 | Week 1"
+title:      "LeetCode - Nov 2026 | Day 1"
 subtitle:   "LeetCode 455 - Assigned Cookies"
 date:       2026-11-06 21:24:00
 author:     "Eric Zhou"
