@@ -62,7 +62,9 @@ We iterate through both arrays using a while loop.
 
 For each iteration, we check:
 
-g[i] <= s[j]
+$$
+g[i] \leq s[j]
+$$
 
 If this condition is `true`, the current cookie can satisfy the child. Therefore, we increment both `i` and `j`.
 
