@@ -10,6 +10,7 @@ header-img: "img/post-bg-js-module.jpg"
 tags:
   - Algorithms
   - Technical Notes
+  - Foundation II
 ---
 
 ## Introduction
