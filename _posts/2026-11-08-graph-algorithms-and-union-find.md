@@ -589,7 +589,7 @@ The MST Lemma provides the edge exchange property, while the MST Theorem uses th
 
 Consider the weighted graph from Professor Painter's lecture notes.
 
-![MST Example Blank](../img/mst-example-blank.png)
+![MST Example Blank](/img/mst-example-blank.png)
 
 Starting from vertex $v_1$, Prim's Algorithm selects the following edges:
 
@@ -617,7 +617,7 @@ $$
 
 The resulting MST contains all eight vertices and seven edges.
 
-![MST Example](../img/mst-example-final.png)
+![MST Example](/img/mst-example-final.png)
 
 *Figure 1 & 2. An undirected weighted graph used to demonstrate Prim's Minimum Spanning Tree Algorithm. Source: Professor Painter's CSE 2331 lecture notes.*
 
@@ -1061,7 +1061,7 @@ Dijkstra considers the total distance from the source to the current vertex plus
 
 The following figure illustrates how Dijkstra's Algorithm constructs a Shortest Path Tree starting from source vertex $v_1$.
 
-![Shortest Path Example](../img/shortest_path_example.png)
+![Shortest Path Example](/img/shortest_path_example.png)
 
 *Figure 3. Step-by-step construction of a Shortest Path Tree using Dijkstra's Algorithm. Source: Professor Painter's CSE 2331 lecture notes.*
 
@@ -1321,8 +1321,8 @@ $$
 
 This improvement requires storing the length of each linked list.
 
-![Linked List Union-Find](../img/linked_list_union_find_blank.png)
-![Linked List Union-Find](../img/linked_list_union_find_final.png)
+![Linked List Union-Find](/img/linked_list_union_find_blank.png)
+![Linked List Union-Find](/img/linked_list_union_find_final.png)
 
 *Figure 4 & 5. Linked List Union-Find before and after the Union operation, showing the updated head and tail pointers. Source: Professor Painter's CSE 2331 lecture notes.*
 
@@ -1481,7 +1481,7 @@ function UnionByHeight(x, y)
 end function
 ```
 
-![Tree-Based Union-Find](../img/tree_based_union_find.png)
+![Tree-Based Union-Find](/img/tree_based_union_find.png)
 
 *Figure 6. Tree-Based Union-Find before and after Union(x7, x15), showing how the root of one tree becomes a child of the other root. Source: Professor Painter's CSE 2331 lecture notes.*
 
@@ -1544,7 +1544,7 @@ end function
 
 **Example:**
 
-![Path Compression](img/path_compression.png)
+![Path Compression](/img/path_compression.png)
 
 *Figure 7. Tree-Based Union-Find before and after FindSetPathCompress(x3), showing how parent pointers along the path are updated to point directly to root x10. Source: Professor Painter's CSE 2331 lecture notes.*
 
