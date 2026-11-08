@@ -1,48 +1,30 @@
-# Graph Algorithms, Greedy Graph Algorithms and Union Find
-
-**Author:** Eric Zhou  
-**Email:** <eric_ds_zhou@outlook.com>  
-**Date:** Nov 07, 2026
+---
+layout:     post
+title:      "Graph Algorithms, Greedy Graph Algorithms and Union Find"
+subtitle:   "Foundation_2 Midterm_5"
+date:       2026-11-08 14:57:00
+author:     "Eric Zhou"
+catalog: true
+published: true
+header-img: "img/post-bg-js-module.jpg"
+tags:
+  - Algorithms
+  - Technical Notes
+  - Foundation II
+---
 
 ## Introduction
+{:.no_toc}
 
 This technical note summarizes the fundamental concepts, algorithms, and data structures used in graph algorithms, with a particular focus on greedy algorithms and Union-Find.
 
 The note covers graph representations, minimum spanning trees, shortest paths, and Union-Find implementations. It also discusses the correctness of greedy algorithms through mathematical theorems and analyzes the time complexity of different implementations.
 
-## Table of Contents
+## Table of contents
+{:.no_toc}
 
-- Graph Algorithms
-  - Basic Graph Concepts
-  - Graph Representations
-    - Adjacency Matrix
-    - Adjacency List
-  - Graph Properties and Lemmas
-  - Algorithm Analysis
-    - Basic Graph Traversal
-    - Graph Algorithms with Priority Queue
-- Minimum Spanning Tree (MST)
-  - Definition
-  - Prim's Algorithm
-  - Kruskal's Algorithm
-  - Lemmas and Theorems
-  - Examples
-  - Implementation and Complexity Analysis
-- Shortest Paths
-  - Definition
-  - Shortest Path Theorems
-  - Dijkstra's Algorithm
-  - Examples
-  - Implementation and Complexity Analysis
-- Union-Find
-  - Definition and Operations
-  - Linked List Union-Find
-    - Weighted Union
-  - Tree-Based Union-Find
-    - Weighted Union
-    - Path Compression
-  - Complexity Analysis
-- Reference List
+* TOC
+{:toc}
 
 ## Graph Algorithms
 
