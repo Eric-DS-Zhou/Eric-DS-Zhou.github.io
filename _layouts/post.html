@@ -179,6 +179,9 @@ layout: default
 
         if (!catalog || !list || !article) return;
 
+        const catalogScroller = catalog.querySelector(".side-catalog");
+        if (!catalogScroller) return;
+
         const headings = Array.from(
             article.querySelectorAll("h2, h3")
         ).filter(h => !h.closest(".comment"));
@@ -206,13 +209,16 @@ layout: default
         });
 
         const links = Array.from(list.querySelectorAll("a"));
+        let lastActiveLink = null;
 
+        
         function updateActive() {
-            
-            const articleTop = article.getBoundingClientRect().top;
 
+            // Keep the original fixed behavior
+            const articleTop = article.getBoundingClientRect().top;
             catalog.classList.toggle("is-fixed", articleTop <= 80);
 
+            // Find the current section
             let activeIndex = 0;
 
             headings.forEach((heading, index) => {
@@ -221,10 +227,37 @@ layout: default
                 }
             });
 
+            // Highlight the current section
             links.forEach((link, index) => {
                 link.classList.toggle("active", index === activeIndex);
             });
+
+            // Automatically scroll the Catalog
+            const activeLink = links[activeIndex];
+
+            if (activeLink && activeLink !== lastActiveLink) {
+                lastActiveLink = activeLink;
+
+                const scrollerTop =
+                    catalogScroller.getBoundingClientRect().top;
+
+                const linkTop =
+                    activeLink.getBoundingClientRect().top;
+
+                const targetScroll =
+                    catalogScroller.scrollTop +
+                    linkTop -
+                    scrollerTop -
+                    catalogScroller.clientHeight / 2 +
+                    activeLink.offsetHeight / 2;
+
+                catalogScroller.scrollTo({
+                    top: Math.max(0, targetScroll),
+                    behavior: "smooth"
+                });
+            }
         }
+
 
         window.addEventListener("scroll", updateActive, {
             passive: true
