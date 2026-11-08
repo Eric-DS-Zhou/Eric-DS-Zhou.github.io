@@ -152,8 +152,8 @@ For an undirected graph $G=(V,E)$, the following properties are equivalent:
 - $G$ is a tree.
 - Every pair of vertices is connected by a unique simple path.
 - $G$ is connected, and every edge is a bridge.
-- $G$ is connected and $|E|=|V|-1$.
-- $G$ is acyclic and $|E|=|V|-1$.
+- $G$ is connected and $\lvert E \rvert = \lvert V \rvert - 1$.
+- $G$ is acyclic and $\lvert E \rvert = \lvert V \rvert - 1$.
 - $G$ is acyclic, and adding any new edge between existing vertices creates a cycle.
 
 These properties are especially useful when analyzing Minimum Spanning Trees.
