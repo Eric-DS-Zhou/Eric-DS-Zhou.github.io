@@ -88,11 +88,14 @@ layout: default
 
             <!-- Article Catalog -->
             {% if page.catalog != false %}
-            <div id="article-catalog" class="side-catalog">
-                <h5>CATALOG</h5>
-                <nav id="catalog-list"></nav>
+            <div id="article-catalog" class="col-lg-2 col-lg-offset-0 catalog-container">
+                <div class="side-catalog">
+                    <h5>CATALOG</h5>
+                    <nav id="catalog-list"></nav>
+                </div>
             </div>
             {% endif %}
+
 
     <!-- Sidebar Container -->
             <div class="
@@ -205,6 +208,11 @@ layout: default
         const links = Array.from(list.querySelectorAll("a"));
 
         function updateActive() {
+            
+            const articleTop = article.getBoundingClientRect().top;
+
+            catalog.classList.toggle("is-fixed", articleTop <= 80);
+
             let activeIndex = 0;
 
             headings.forEach((heading, index) => {
