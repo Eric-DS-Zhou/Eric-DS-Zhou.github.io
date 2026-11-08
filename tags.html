@@ -6,111 +6,191 @@ header-img: "img/faded.png"
 ---
 
 <!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading" id="tag-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <span class="subheading">{{ page.description }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<header class="intro-header"
+	style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="site-heading" id="tag-heading">
+					<h1>{{ page.title }}</h1>
+					<span class="subheading">{{ page.description }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>
 
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<!-- 标签云 -->
+
+			<!-- Tag Cloud -->
 			<div id="tag_cloud" class="tags">
-				<a href="#" data-tag="" class="is-active">
+				<a href="{{ site.baseurl }}/tags/" data-tag="" class="is-active">
 					Show All <sup>{{ site.posts.size }}</sup>
 				</a>
+
 				{% for tag in site.tags %}
-				<a href="#{{ tag[0] }}" data-tag="{{ tag[0] | escape }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+				<a href="{{ site.baseurl }}/tags/?tag={{ tag[0] | url_encode }}" data-tag="{{ tag[0] | escape }}"
+					title="{{ tag[0] }}" rel="{{ tag[1].size }}">
 					{{ tag[0] }} <sup>{{ tag[1].size }}</sup>
 				</a>
 				{% endfor %}
 			</div>
 
+			<!-- Filtered Articles -->
+			<div class="one-tag-list">
+				<span class="fa fa-tag listing-seperator">
+					<span id="filter-heading" class="tag-text">
+						All Articles
+					</span>
+				</span>
 
-            <!-- 标签列表 -->
-			{% for tag in site.tags %}
-			<div class="one-tag-list" data-tag="{{ tag[0] | escape }}">
+				{% for post in site.posts %}
+				<div class="post-preview filter-item" data-tags="{{ post.tags | jsonify | escape }}">
 
-			  	<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
-                    <span class="tag-text">{{ tag[0] }}</span>
-                </span>
-				{% for post in tag[1] %}
-				  <!-- <li class="listing-item">
-				  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-				  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="{{ post.url | prepend: site.baseurl }}">
-				        <h2 class="post-title">
-                            {{ post.title }}
-				        </h2>
-				        {% if post.subtitle %}
-				        <h3 class="post-subtitle">
-				            {{ post.subtitle }}
-				        </h3>
-				        {% endif %}
-				    </a>
-				    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+					<a href="{{ post.url | prepend: site.baseurl }}">
+						<h2 class="post-title">
+							{{ post.title }}
+						</h2>
+
+						{% if post.subtitle %}
+						<h3 class="post-subtitle">
+							{{ post.subtitle }}
+						</h3>
+						{% endif %}
+					</a>
 				</div>
-				<hr>
+				<hr class="filter-divider">
 				{% endfor %}
 			</div>
-			{% endfor %}
 
 		</div>
 	</div>
 </div>
 
+<!-- Tag Filtering -->
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		const tags = document.querySelectorAll("#tag_cloud a");
-		const lists = document.querySelectorAll(".one-tag-list");
+		const buttons = Array.from(
+			document.querySelectorAll("#tag_cloud a")
+		);
 
-		let selectedTag = null;
+		const posts = Array.from(
+			document.querySelectorAll(".filter-item")
+		);
 
-		function filterTags(clickedTag) {
+		const heading = document.getElementById("filter-heading");
 
-			// Show All or toggle the selected tag
-			if (clickedTag === "" || selectedTag === clickedTag) {
-				selectedTag = null;
-			} else {
-				selectedTag = clickedTag;
-			}
+		let selectedTag = "";
 
-			// Show or hide article groups
-			lists.forEach(function (list) {
-				if (selectedTag === null ||
-					list.dataset.tag === selectedTag) {
-					list.style.display = "";
-				} else {
-					list.style.display = "none";
+		function filterTags(tag) {
+			selectedTag = tag;
+
+			// Show only matching articles
+			posts.forEach(function (post) {
+				const postTags = JSON.parse(post.dataset.tags || "[]");
+				const visible = !tag || postTags.includes(tag);
+
+				post.style.display = visible ? "" : "none";
+
+				const divider = post.nextElementSibling;
+
+				if (divider &&
+					divider.classList.contains("filter-divider")) {
+					divider.style.display = visible ? "" : "none";
 				}
 			});
 
-			// Update selected tag color
-			tags.forEach(function (tag) {
-				const isSelected = selectedTag === null
-					? tag.dataset.tag === ""
-					: tag.dataset.tag === selectedTag;
+			// Highlight selected tag
+			buttons.forEach(function (button) {
+				button.classList.toggle(
+					"is-active",
+					button.dataset.tag === tag
+				);
+			});
 
-				tag.classList.toggle("is-active", isSelected);
+			// Update heading
+			heading.textContent = tag || "All Articles";
+		}
+
+		function validTag(tag) {
+			return buttons.some(function (button) {
+				return button.dataset.tag === tag;
 			});
 		}
 
-		tags.forEach(function (tag) {
-			tag.addEventListener("click", function (event) {
+		function readTagFromURL() {
+			const params = new URLSearchParams(window.location.search);
+			const queryTag = params.get("tag");
+
+			if (queryTag !== null) {
+				return validTag(queryTag) ? queryTag : "";
+			}
+
+			// Support old links such as /tags/#LeetCode
+			if (window.location.hash) {
+				let hashTag = window.location.hash.slice(1);
+
+				try {
+					hashTag = decodeURIComponent(hashTag);
+				} catch (error) {
+					return "";
+				}
+
+				return validTag(hashTag) ? hashTag : "";
+			}
+
+			return "";
+		}
+
+		function updateURL(tag, replace) {
+			const url = new URL(window.location.href);
+
+			if (tag) {
+				url.searchParams.set("tag", tag);
+			} else {
+				url.searchParams.delete("tag");
+			}
+
+			url.hash = "";
+
+			if (replace) {
+				history.replaceState(null, "", url);
+			} else {
+				history.pushState(null, "", url);
+			}
+		}
+
+		// Handle clicks within the Tags page
+		buttons.forEach(function (button) {
+			button.addEventListener("click", function (event) {
 				event.preventDefault();
-				filterTags(tag.dataset.tag);
+
+				const clickedTag = button.dataset.tag;
+
+				const nextTag =
+					clickedTag === selectedTag ? "" : clickedTag;
+
+				filterTags(nextTag);
+				updateURL(nextTag, false);
 			});
 		});
+
+		// Restore selection on browser Back / Forward
+		window.addEventListener("popstate", function () {
+			filterTags(readTagFromURL());
+		});
+
+		// Initialize selection from the URL
+		const initialTag = readTagFromURL();
+
+		filterTags(initialTag);
+
+		if (window.location.hash) {
+			updateURL(initialTag, true);
+			window.scrollTo(0, 0);
+		}
 	});
 </script>
