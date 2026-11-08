@@ -77,21 +77,6 @@ header-img: "img/faded.png"
 
 		let selectedTag = null;
 
-		
-		const params = new URLSearchParams(window.location.search);
-		const initialTag = params.get("tag");
-
-		if (initialTag) {
-			const matchedTag = Array.from(tags).find(
-				tag => tag.dataset.tag === initialTag
-			);
-
-			if (matchedTag) {
-				matchedTag.click();
-			}
-		}
-
-
 		function filterTags(clickedTag) {
 
 			// Show All or toggle the selected tag
