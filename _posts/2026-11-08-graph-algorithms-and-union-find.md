@@ -40,8 +40,8 @@ where:
 
 - $V$: The set of vertices (nodes).
 - $E$: The set of edges connecting vertices.
-- $|V| = n$: The number of vertices.
-- $|E| = m$: The number of edges.
+- $\lvert V \rvert = n$: The number of vertices.
+- $\lvert E \rvert = m$: The number of edges.
 - $G.V$: The vertex set of graph $G$.
 - $G.E$: The edge set of graph $G$.
 
