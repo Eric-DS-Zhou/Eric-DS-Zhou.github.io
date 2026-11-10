@@ -4,13 +4,15 @@ title:      "LeetCode - Nov 2026 | Day 4"
 subtitle:   "LeetCode 88 & 283 - Merge Sorted Array & Move Zeroes"
 date:       2026-11-10 12:51:00
 author:     "Eric Zhou"
-catalog:    true
-published:  true
-header-img: "img/post-bg-algorithm.jpg"
+catalog: true
+published: true
+header-img: "img/post-bg-js-module.jpg"
 tags:
-    - Algorithms
-    - LeetCode
-    - Java
+
+- Algorithms
+- LeetCode
+- Java
+
 ---
 
 ## Introduction
@@ -23,6 +25,8 @@ Today's practice focuses on two **in-place two-pointer** problems: merging two s
 
 * TOC
 {:toc}
+
+---
 
 ## Leetcode 88 - Merge Sorted Array
 
