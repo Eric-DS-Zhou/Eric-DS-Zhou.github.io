@@ -24,8 +24,6 @@ Today's practice focuses on two **in-place two-pointer** problems: merging two s
 * TOC
 {:toc}
 
----
-
 ## Leetcode 88 - Merge Sorted Array
 
 ### Question
@@ -164,8 +162,6 @@ class Solution {
     }
 }
 ```
-
----
 
 ## Summary
 
