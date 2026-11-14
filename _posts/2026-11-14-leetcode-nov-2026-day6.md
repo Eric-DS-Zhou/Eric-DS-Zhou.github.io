@@ -6,7 +6,7 @@ date:       2026-11-14 11:52:00
 author:     "Eric Zhou"
 catalog:    true
 published:  true
-header-img: "img/post-bg-algorithm.jpg"
+header-img: "img/post-bg-js-module.jpg"
 tags:
     - Algorithms
     - LeetCode
