@@ -342,7 +342,7 @@ $$
 
 #### Step 1: Clique Is in NP
 
-Given $V'$, check that $|V'|=M$ and check every vertex pair for an edge. This takes polynomial time (the lecture states $O(mn^2)$; an adjacency matrix permits $O(n^2)$ pair checks).
+Given $V'$, check that $\lvert V' \rvert = M$ and check every vertex pair for an edge. This takes polynomial time (the lecture states $O(mn^2)$; an adjacency matrix permits $O(n^2)$ pair checks).
 
 #### Step 2: Reduce Independent Set to Clique
 
