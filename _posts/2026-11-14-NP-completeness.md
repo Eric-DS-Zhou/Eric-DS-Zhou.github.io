@@ -119,10 +119,12 @@ To show that a **decision problem $Q$ is in NP**, we do **not** have to find a s
 4. **Complexity:** Show that all checks take polynomial time in the input size.
 5. **Conclusion:** Therefore $Q\in NP$.
 
-**Example — Clique.** Given a proposed set $S$ of $K$ vertices, first confirm $|S|=K$. Then check that **every pair** of vertices in $S$ is connected. There are at most
+**Example — Clique.** Given a proposed set $S$ of $K$ vertices, first confirm that $\lvert S \rvert = K$. Then check that every pair of vertices in $S$ is connected.
+
+There are at most
 
 $$
-\binom{K}{2}=\frac{K(K-1)}2=O(n^2)
+\binom{K}{2} = \frac{K(K-1)}{2} = O(n^2)
 $$
 
 pairs for $K\le n$. With an adjacency matrix, each edge lookup is $O(1)$, so the pair checks take $O(n^2)$. Hence Clique is in NP. The lecture also gives an $O(mn^2)$ polynomial bound when checking edges less directly.
