@@ -390,11 +390,12 @@ Given a set $W$, verify its size and inspect every edge $(u,v)$ to see whether $
 
 #### Step 2: Reduce Independent Set to Vertex Cover
 
-**Key lemma:** A set $V'$ is independent in $G$ **if and only if** its complement $V\setminus V'$ is a vertex cover of $G$.
+**Key lemma:** A set $V'$ is independent in $G$ **if and only if** its complement $V \setminus V'$ is a vertex cover of $G$.
 
-Let $n=|V|$.
+Let $n = \lvert V \rvert$.
 
 **Construction:** Keep the graph unchanged; change the target size:
+
 
 $$
 \boxed{(G,K)\longmapsto(G,M=n-K)}.
@@ -472,7 +473,7 @@ Given $(G=(V,E),M)$, build a Set Cover instance as follows:
 
 **Reverse:** If $M$ of the sets $S_i$ cover all of $U=E$, select the corresponding vertices $v_i$. Since every edge belongs to a chosen set, every edge has an endpoint among the selected vertices. They form a vertex cover of size $M$.
 
-**Running time:** The lecture gives $O(mn)$ to construct $U$ and the collection, where $m=|E|$ and $n=|V|$.
+**Running time:** The lecture gives $O(mn)$ to construct $U$ and the collection, where $m = \lvert E \rvert$ and $n = \lvert V \rvert$.
 
 $$
 \boxed{\text{Vertex Cover}\leq_p\text{Set Cover}}.
@@ -570,7 +571,7 @@ These worked examples follow the lecture's emphasis on writing down the **certif
 
 **Step 1 — Certificate.** A subset $W\subseteq V$ claimed to contain $M$ vertices and cover all edges.
 
-**Step 2 — Check the size.** Verify $|W|=M$ and that the selected objects are distinct vertices of $G$.
+**Step 2 – Check the size.** Verify $\lvert W \rvert = M$ and that the selected objects are distinct vertices of $G$.
 
 **Step 3 — Check the condition.** For every $(u,v)\in E$, verify that $u\in W$ **or** $v\in W$.
 
