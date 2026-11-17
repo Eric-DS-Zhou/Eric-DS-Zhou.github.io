@@ -17,6 +17,38 @@
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
+<!-- Smart Navbar -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const navbar = document.querySelector(".navbar-custom");
+        if (!navbar) return;
+
+        let lastScrollY = window.scrollY;
+
+        function updateNavbar() {
+            const currentScrollY = window.scrollY;
+            const difference = currentScrollY - lastScrollY;
+
+            if (currentScrollY <= 80) {
+                navbar.classList.remove("is-fixed", "is-visible");
+            } else {
+                navbar.classList.add("is-fixed");
+
+                if (difference < -5) {
+                    navbar.classList.add("is-visible");
+                } else if (difference > 5) {
+                    navbar.classList.remove("is-visible");
+                }
+            }
+
+            lastScrollY = currentScrollY;
+        }
+
+        window.addEventListener("scroll", updateNavbar, { passive: true });
+        updateNavbar();
+    });
+</script>
+
 </body>
 
 </html>
