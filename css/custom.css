@@ -161,7 +161,9 @@
     width: 100%;
     z-index: 9998;
 
-    background: rgba(255, 255, 255, 0.97) !important;
+    background: rgba(255, 255, 255, 0.80) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #eee !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
