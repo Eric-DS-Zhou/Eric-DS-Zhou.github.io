@@ -136,3 +136,19 @@
     margin: 0;
     flex-shrink: 0;
 }
+
+#back-to-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+#back-to-top svg {
+    position: static;
+    display: block;
+    margin: 0 !important;
+    padding: 0;
+    transform: none;
+}
