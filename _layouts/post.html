@@ -267,3 +267,28 @@ layout: default
         updateActive();
     });
 </script>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" type="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const backToTop = document.getElementById("back-to-top");
+
+        function updateButton() {
+            backToTop.classList.toggle("show", window.scrollY > 300);
+        }
+
+        window.addEventListener("scroll", updateButton, { passive: true });
+        updateButton();
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    });
+</script>
