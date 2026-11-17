@@ -153,30 +153,16 @@
     transform: none;
 }
 
-/* Smart Navbar - White Background */
-
-/* Smooth transition */
-.navbar-custom {
-    transition:
-        background-color 0.3s ease,
-        box-shadow 0.3s ease;
+/* Smart Navbar Test */
+.navbar-custom.is-fixed,
+.navbar-custom.is-fixed.is-visible {
+    background: #ffffff !important;
+    background-image: none !important;
+    border-bottom: 1px solid #eeeeee !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* White background when scrolling */
-.navbar-custom.is-fixed {
-    background-color: rgba(255, 255, 255, 0.97) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* Dark text on white background */
 .navbar-custom.is-fixed .navbar-brand,
 .navbar-custom.is-fixed .navbar-nav>li>a {
-    color: #333 !important;
-}
-
-/* Hover effect */
-.navbar-custom.is-fixed .navbar-brand:hover,
-.navbar-custom.is-fixed .navbar-nav>li>a:hover {
-    color: #0085a1 !important;
+    color: #333333 !important;
 }
