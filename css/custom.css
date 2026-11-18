@@ -152,17 +152,3 @@
     padding: 0;
     transform: none;
 }
-
-/* Smart Navbar Test */
-.navbar-custom.is-fixed,
-.navbar-custom.is-fixed.is-visible {
-    background: #ffffff !important;
-    background-image: none !important;
-    border-bottom: 1px solid #eeeeee !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-}
-
-.navbar-custom.is-fixed .navbar-brand,
-.navbar-custom.is-fixed .navbar-nav>li>a {
-    color: #333333 !important;
-}
